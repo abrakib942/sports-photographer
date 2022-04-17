@@ -11,13 +11,13 @@ const Home = () => {
   const [services, setServices] = useService();
   return (
     <div>
-      <div className="site-name">
+      <div className="site-name ">
         <h3 className="text-center mt-5 fst-italic title">
           A <span className="text-primary">Sports Photographer</span>, <br />{" "}
           Who Clicks of Champions and Emotions.
         </h3>
       </div>
-      <Carousel>
+      <Carousel className="caption">
         <Carousel.Item>
           <img
             className="d-block w-100 col col-lg-4"
