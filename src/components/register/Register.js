@@ -7,6 +7,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
+  const [passError, setPassError] = useState("");
   const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -37,6 +38,11 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (password !== confirmPass) {
+      setPassError("Your password didn't match");
+      return;
+    }
 
     createUserWithEmailAndPassword(email, password);
   };
@@ -75,6 +81,7 @@ const Register = () => {
               required
             />
           </div>
+          <p className="text-danger">{passError}</p>
           {errorElement}
           <input className="form-submit mb-2" type="submit" value="Register" />
         </form>
