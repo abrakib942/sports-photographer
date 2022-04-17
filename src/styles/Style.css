@@ -1,4 +1,30 @@
-.nav {
-  background: transparent;
-  color: black;
+.header {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+}
+.site-name {
+  position: absolute;
+  z-index: 1;
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.title {
+  font-size: 3em;
+  font-weight: 700;
+  font-family: monospace;
+  /* color: rgb(8, 248, 248); */
+  color: lightblue;
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 75%;
+  margin: auto;
+
+  /* background-color: lightblue; */
+}
+@media (max-width: 788) {
+  .site-name.title {
+    color: red;
+  }
 }

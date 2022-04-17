@@ -5,7 +5,7 @@ import logo from "../../images/logo.png";
 
 const Header = () => {
   return (
-    <nav>
+    <div className="header">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark ">
         <Container>
           <Navbar.Brand>
@@ -38,7 +38,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </nav>
+    </div>
   );
 };
 
