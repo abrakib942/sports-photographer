@@ -10,3 +10,7 @@
 - all services are in Services page.
 - Questions and answers are in blogs.
 - About page is about me.
+
+* Login and register form.
+* Email verification system.
+* password reset system
