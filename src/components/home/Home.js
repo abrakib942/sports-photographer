@@ -7,6 +7,7 @@ import banner3 from "../../images/banner3.jpg";
 import useService from "../../hooks/useService";
 import Service from "../service/Service";
 import { Link } from "react-router-dom";
+import OtherActivities from "../otherActivities/OtherActivities";
 
 const Home = () => {
   const [services, setServices] = useService();
@@ -69,6 +70,8 @@ const Home = () => {
           See All
         </Link>
       </div>
+
+      <OtherActivities />
 
       <Footer />
     </div>

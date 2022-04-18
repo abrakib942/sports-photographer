@@ -20,9 +20,13 @@
   border-radius: 10px; */
   width: 75%;
   margin: auto;
-
-  /* background-color: lightblue; */
 }
+
+.cards {
+  gap: 70px;
+  margin-bottom: 40px;
+}
+
 @media (max-width: 788px) {
   .title {
     font-size: 1em;
