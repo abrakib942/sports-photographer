@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+import google from "../../images/google.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +16,9 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -19,7 +26,7 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  if (user) {
+  if (user || googleUser) {
     navigate("/");
   }
 
@@ -72,6 +79,14 @@ const Login = () => {
             Create an account
           </Link>
         </p>
+        <p className="text-danger">{googleError?.message}</p>
+        <button
+          onClick={() => signInWithGoogle()}
+          className=" btn btn-outline-dark d-block mx-auto my-3"
+        >
+          <img src={google} alt="" />
+          <span className="px-2">Sign in with Google</span>
+        </button>
       </div>
     </div>
   );

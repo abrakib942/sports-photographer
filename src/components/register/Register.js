@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import google from "../../images/google.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +16,9 @@ const Register = () => {
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -27,15 +34,14 @@ const Register = () => {
   if (error) {
     errorElement = (
       <div>
-        <p className="text-danger">Error: {error.message}</p>
+        <p className="text-danger"> {error.message}</p>
       </div>
     );
   }
 
-  if (user) {
+  if (user || googleUser) {
     navigate("/");
   }
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -91,6 +97,14 @@ const Register = () => {
             Login
           </Link>
         </p>
+        <p className="text-danger">{googleError?.message}</p>
+        <button
+          onClick={() => signInWithGoogle()}
+          className=" btn btn-outline-dark d-block mx-auto my-3"
+        >
+          <img src={google} alt="" />
+          <span className="px-2">Sign in with Google</span>
+        </button>
       </div>
     </div>
   );
