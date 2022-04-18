@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Service = ({ service }) => {
   const { name, description, img, price } = service;
@@ -11,7 +12,9 @@ const Service = ({ service }) => {
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>
           <h4 className="text-danger">${price}</h4>
-          <Button variant="primary">Explore</Button>
+          <Link to="/checkout" className="btn btn-primary">
+            Explore
+          </Link>
         </Card.Body>
       </Card>
     </div>

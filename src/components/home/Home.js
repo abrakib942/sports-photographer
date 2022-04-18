@@ -6,6 +6,7 @@ import banner2 from "../../images/banner2.jpg";
 import banner3 from "../../images/banner3.jpg";
 import useService from "../../hooks/useService";
 import Service from "../service/Service";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [services, setServices] = useService();
@@ -57,10 +58,16 @@ const Home = () => {
         </h2>
 
         <div className=" row row-cols-lg-3 row-cols-md-2 ">
-          {services.slice(0, 4).map((service) => (
+          {services.slice(0, 3).map((service) => (
             <Service key={service.id} service={service}></Service>
           ))}
         </div>
+        <Link
+          to="/services"
+          className="text-danger fw-bold btn btn-link text-decoration-none d-block mx-auto"
+        >
+          See All
+        </Link>
       </div>
 
       <Footer />

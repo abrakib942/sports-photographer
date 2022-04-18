@@ -6,6 +6,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import google from "../../images/google.png";
+import Loading from "../loading/Loading";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -15,10 +16,9 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
-    useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleError] = useSignInWithGoogle(auth);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -29,6 +29,21 @@ const Register = () => {
   const handleConfirm = (event) => {
     setConfirmPass(event.target.value);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password !== confirmPass) {
+      setPassError("Your password didn't match");
+      return;
+    }
+
+    createUserWithEmailAndPassword(email, password);
+  };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   let errorElement;
   if (error) {
@@ -42,16 +57,7 @@ const Register = () => {
   if (user || googleUser) {
     navigate("/");
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    if (password !== confirmPass) {
-      setPassError("Your password didn't match");
-      return;
-    }
-
-    createUserWithEmailAndPassword(email, password);
-  };
   return (
     <div className="form-container mt-5">
       <div>
