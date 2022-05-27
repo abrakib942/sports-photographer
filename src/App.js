@@ -5,8 +5,7 @@ import "./styles/Style.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import AllServices from "./components/allServices/AllServices";
-import Blog from "./components/blogs/Blog";
-import About from "./components/about/About";
+
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import NotFound from "./components/notFound/NotFound";
@@ -22,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/services" element={<AllServices />}></Route>
-        <Route path="/about" element={<About />}></Route>
+
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route
